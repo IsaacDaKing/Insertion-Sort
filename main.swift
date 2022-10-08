@@ -1,42 +1,41 @@
-
-
-
 // ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩
 // DO NOT ALTER THE TEXT BETWEEN THESE LINES =========={M{E{R{L{I{N{1}N}I}L}R}E}M}=====================================
 let unsortedIntegers = [5, 1, 4, 2, 8]
 // DO NOT ALTER THE TEXT BETWEEN THESE LINES =========={M{E{R{L{I{N{1}N}I}L}R}E}M}=====================================
 // ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧
 
-//Helped by Kevin, Avanish, and Reynard (i need a lot of help)
-// Add your code below:
+//Helped A LOT by Reyn(e)/(a)rd, Avanish, Christian, Kevin, Isaac (myself), and Pranav, and Onik (unintentonally hahahha)
+// they xplained everything to me and I used my big braen to lern everything
+func swap(integers: inout [Int], firstIndex: Int, secondIndex: Int) {
+    integers.swapAt(firstIndex, secondIndex)
+}
 
-var fig1 = 0
-var fig2 = 1
-var rep = 1
-var pass = 0
+
+var pass = -1
 var swaps = 0
-var swap = 0
-var list = unsortedIntegers
+var totalswap = 0
+var index = 0
+var integers : [String] = []
 
 
-print("Pass: 0, Swaps: 0/0, Array: \(list)")
-var count = list.count - 1
-for _ in 1 ... count {
-    rep = 1
-    swap = 0
-    while list[fig2] < list[fig1] {
-        list.swapAt(fig1,fig2)
-        if fig1 > 0 {
-            fig1 -= 1
-            fig2 -= 1
-            rep += 1
+while let line = readLine() {
+    integers.append(line)
+}
+
+
+for i in 0 ..< integers.count {
+    pass+=1
+    swaps = 0
+    index = i
+    while index > 0 {
+        if integers[index] < integers[index-1] {
+            swap(integers: &integers, firstIndex: index, secondIndex: index-1)
+            index-=1
+            totalswap+=1
+            swaps+=1
+        } else {
+            break
         }
-        
-        swaps += 1
-        swap += 1
     }
-    fig1 += rep
-    fig2 += rep
-    pass += 1
-    print("Pass: \(pass), Swaps: \(swap)/\(swaps), Array: \(list)")
+    print("Pass: \(pass), Swaps: \(swaps)/\(totalswap), Array: \(integers)")
 }
